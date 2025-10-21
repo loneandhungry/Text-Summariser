@@ -12,6 +12,7 @@ export function PDFUpload({setSummary, length, setLoading, token,loading}){
         const formData = new FormData();
         formData.append("file",file);
         formData.append("length",length);
+
         try{
             setLoading(true);
         const res = await axios.post(`${import.meta.env.VITE_API_URL}/summarise`,
@@ -19,7 +20,8 @@ export function PDFUpload({setSummary, length, setLoading, token,loading}){
            { headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
-        }})
+        }, withCredentials: true, 
+      })
         setSummary(res.data.summary);
          alert("File successfully uploaded and summarised down (down of the page).");
     } catch (err) {

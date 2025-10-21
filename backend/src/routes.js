@@ -11,6 +11,13 @@ import { PDFParse } from "pdf-parse"
 const route = express.Router();
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
+
+route.use((req,res,next)=>{
+  res.setHeader("Cross-Origin-Opener-policy","same-origin");
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+  next();
+});
+
 route.use(cors({
     origin: "https://text-summariser-lilac.vercel.app",
     credentials: true
