@@ -14,7 +14,7 @@ export function PDFUpload({setSummary, length, setLoading, token,loading}){
         formData.append("length",length);
         try{
             setLoading(true);
-        const res = await axios.post("http://localhost:5000/summarise",
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/summarise`,
             formData,
            { headers: {
           Authorization: `Bearer ${token}`,

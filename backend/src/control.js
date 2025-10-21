@@ -45,30 +45,6 @@ export function chunker(text){
 }
 
 
-export async function TextFromPdf(file, name) {
- const formData = new FormData();
-
-  const blob = new Blob([file] , {type: "application/pdf"});
-  formData.append("file", blob,  name  );
-
-  try {
-    const response = await axios.post(
-      "https://api.pdfrest.com/extracted-text", // Make sure this is the correct endpoint for extracting text
-      formData,
-      {
-        headers: {
-          ...formData.getHeaders(),
-          "Api-Key": process.env.PDFREST_API_KEY,
-        },
-      }
-    );
-
-    return response.data.text;
-  } catch (err) {
-    console.error(`Error in the API call: ${err}`);
-    return null;
-  }
-}
 
 
 
