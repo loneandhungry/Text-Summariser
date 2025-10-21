@@ -101,7 +101,7 @@ return (
     
 
 <div className="absolute top-6 left-6">
-  <LogOut setToken={setToken} />
+  {token && <LogOut setToken={setToken} />}
 </div>
 
 

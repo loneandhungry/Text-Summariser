@@ -26,7 +26,7 @@ route.get("/",(req,res)=>{
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 
-route.post("/summarise",verify,limiter,upload.single("file"),async(req,res)=>{
+route.post("/summarise",verify,upload.single("file"),limiter,async(req,res)=>{
      let text = req.body.text || null ;
     
     if(req.file){

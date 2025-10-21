@@ -29,7 +29,7 @@ export async function summarizeText(text,length){
 
 export const limiter = rateLimit({
     windowMs: 20*60*1000,
-    limit: 5,
+    limit: 15,
     message: "Too many requests from this IP. Please try again after 20 minutes."
 })
 
