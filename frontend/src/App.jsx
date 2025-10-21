@@ -12,7 +12,7 @@ export function Login({ setToken }) {
         <GoogleLogin
           onSuccess={async (response) => {
             const token = response.credential;
-            const res = await axios.post('http://localhost:5000/auth', { token });
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth`, { token });
             localStorage.setItem("token", res.data.token);
             setToken(res.data.token);
             alert("Please upload a PDF File, or put in a text. And select the size of summary you want.")
