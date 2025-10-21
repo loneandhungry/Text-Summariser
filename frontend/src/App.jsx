@@ -62,7 +62,7 @@ export default function App() {
     setSummary("");
     try {
       const response = await axios.post(
-        "http://localhost:5000/summarise",
+        `${import.meta.env.VITE_API_URL}/summarise`,
         { text, length },
         {
           headers: { Authorization: `Bearer ${authToken}` },
