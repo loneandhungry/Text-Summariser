@@ -12,9 +12,13 @@ const route = express.Router();
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 route.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://text-summariser-lilac.vercel.app",
     credentials: true
 }))
+
+route.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 route.get("/",(req,res)=>{
     res.send("YAYY");
