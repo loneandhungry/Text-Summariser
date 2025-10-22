@@ -98,47 +98,45 @@ export default function App() {
 
 return (
   <div className="relative flex flex-col lg:flex-row justify-start lg:justify-between items-start min-h-screen bg-[#f5ebd6] px-6 lg:px-16 py-6 overflow-hidden font-body">
-    
 
-<div className="absolute top-6 left-6">
-  {token && <LogOut setToken={setToken} />}
-</div>
+    <div className="absolute top-6 left-6">
+      {token && <LogOut setToken={setToken} />}
+    </div>
 
+    {/* Left Text Section */}
+    <div className="w-full lg:w-1/2 flex flex-col justify-start items-start space-y-4 mt-16 animate-[floatIn_2s_ease-in-out]">
+      <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-[#78350f] leading-tight tracking-tight animate-[bounceIn_2.5s_ease-in-out] font-heading">
+        Read Less.<br />
+        <span className="text-[#b45309]">Learn More.</span>
+      </h1>
 
-<div className="w-1/2 flex flex-col justify-start items-start space-y-4 mt-16 animate-[floatIn_2s_ease-in-out]">
-  <h1 className="text-8xl font-extrabold text-[#78350f] leading-tight tracking-tight animate-[bounceIn_2.5s_ease-in-out] font-heading">
-    Read Less.<br />
-    <span className="text-[#b45309]">Learn More.</span>
-  </h1>
+      <p className="text-2xl sm:text-3xl text-[#92400e] font-medium tracking-wide mt-3">
+        Transform words into clarity and knowledge, effortlessly.
+      </p>
 
-  <p className="text-3xl text-[#92400e] font-medium tracking-wide mt-3">
-    Transform words into clarity and knowledge, effortlessly.
-  </p>
+      <p className="text-lg sm:text-xl text-[#4b2e14] font-light">
+        <span className="font-semibold">Tejaswani, K24</span> <br />
+        BIT MESRA
+      </p>
 
-  <p className="text-xl text-[#4b2e14] font-light">
-    <span className="font-semibold">Tejaswani, K24</span> <br />
-    BIT MESRA
-  </p>
+      <p className="text-lg sm:text-lg text-[#78350f] font-medium mt-1">
+        Dive into smarter reading, faster comprehension, and concise summaries at your fingertips.
+      </p>
 
-  <p className="text-lg text-[#78350f] font-medium mt-1">
-    Dive into smarter reading, faster comprehension, and concise summaries at your fingertips.
-  </p>
+      <p className="text-lg sm:text-lg text-[#78350f] font-medium italic mt-1">
+        Seamlessly turn text into knowledge, one summary at a time.
+      </p>
 
-  <p className="text-lg text-[#78350f] font-medium italic mt-1">
-    Seamlessly turn text into knowledge, one summary at a time.
-  </p>
+      <p className="text-lg sm:text-lg text-[#78350f] font-semibold italic mt-1">
+        Your AI-powered text companion.
+      </p>
 
-  <p className="text-lg text-[#78350f] font-semibold italic mt-1">
-    Your AI-powered text companion.
-  </p>
+      <p className="text-lg sm:text-lg text-[#78350f] font-semibold italic mt-1">
+        Github - https://github.com/loneandhungry/Text_Summariser
+      </p>
+    </div>
 
-   <p className="text-lg text-[#78350f] font-semibold italic mt-1">
-    Github - https://github.com/loneandhungry/Text_Summariser
-  </p>
-</div>
-
-
-    
+    {/* Right Form Section */}
     <div className="w-full lg:w-1/2 flex flex-col justify-start items-center bg-[#fdf5eb] p-6 sm:p-8 lg:p-10 rounded-3xl border border-[#92400e] shadow-lg hover:shadow-2xl transition-all duration-500 mt-8 lg:mt-0">
       <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold text-[#78350f] mb-6 lg:mb-10 text-center font-heading">
         Text Summariser
@@ -146,13 +144,12 @@ return (
 
       {token ? (
         <>
-    
           <div className="w-full max-w-2xl mb-6 lg:mb-10">
             <div className="bg-[#fef3e7] border-2 border-[#92400e] rounded-2xl shadow-md hover:shadow-xl 
                             transition-all duration-300 p-4 sm:p-6 flex flex-col items-center justify-center w-full">
               <h4 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#78350f] mb-2 sm:mb-3 flex items-center gap-2 font-heading">
                   Upload PDF
-                </h4>
+              </h4>
               <PDFUpload
                 setSummary={setSummary}
                 length={length}
@@ -166,7 +163,6 @@ return (
             </div>
           </div>
 
-        
           <div className="bg-[#fdf5ec] shadow-xl p-4 sm:p-6 lg:p-6 rounded-3xl border border-[#92400e] w-full max-w-2xl">
             <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-4xl font-bold text-center mb-3 sm:mb-4 text-[#78350f] font-heading">
               Text Box
@@ -217,6 +213,7 @@ return (
     </div>
   </div>
 );
+
 
 
 }
