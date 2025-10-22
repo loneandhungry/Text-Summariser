@@ -13,8 +13,9 @@ export async function  generateSummary(text,length){
       const max_length = getLength(length);
       try {
         const response = await axios.post(
-            "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
-            { inputs: text , parameters : {max_length}},
+            "https://api-inference.huggingface.co/models/facebook/bart-large-xsum",
+            { inputs: `Summarize the following text in 3-4 sentences:\n${text}` ,
+                 parameters : {max_length}},
             { 
                 headers: {
                     Authorization: `Bearer ${KEY}`,
