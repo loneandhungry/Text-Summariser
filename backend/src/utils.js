@@ -5,9 +5,9 @@ const KEY = process.env.HUGGING_FACE_API;
 let prompt = 1;
 
 function getLength(l){
-    if(l === "s") {prompt = 2 ;return {max_length: 70, min_length: 20}}
-    else if(l === "m") {prompt = 4 ; return {max_length: 140, min_length: 60}}
-    else {prompt = 4 ; return {max_length: 240, min_length: 140}}
+    if(l === "s") {prompt = 2 ;return {max_length: 100, min_length: 20}}
+    else if(l === "m") {prompt = 4 ; return {max_length: 150, min_length: 60}}
+    else {prompt = 4 ; return {max_length: 240, min_length: 200}}
 }
 
 /*
@@ -75,8 +75,7 @@ const data =({
             content: `Summarize the following text concisely in ${max_length} characters. 
                 Only include information explicitly present in the text. 
                 Do NOT add anything extra, do NOT infer, do NOT assume. 
-                Even if there is not sufficient information, don't add anything, just return the summary as-it-is.
-               If the text is too short to summarize, just return it as-is. NO FACT OR INFORMATION FROM OUTSIDE THE PROVIDED TEXT AT ALL!!
+               If the text is too short to summarize, just return it as-is. 
                  :\n${text}`,
         },
     ],
