@@ -18,14 +18,15 @@ export async function  generateSummary(text,length){
       const {max_length,min_length} = getLength(length);
       try {
         const response = await axios.post(
-           "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-3B",
+           "https://api-inference.huggingface.co/models/google/pegasus-xsum",
             {
                  inputs: `Summarize the following text concisely. 
+                 Maximum number of characters to be used are ${max_length}.
                 Only include information explicitly present in the text. 
                 Do NOT add anything extra, do NOT infer, do NOT assume. 
                If the text is too short to summarize, just return it as-is. 
                  :\n${text}`, 
-             parameters : {max_new_tokens: max_length}
+             
             }, 
             {  headers: {
                     Authorization: `Bearer ${KEY}`,
