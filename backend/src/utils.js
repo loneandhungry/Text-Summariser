@@ -21,11 +21,11 @@ export async function  generateSummary(text,length){
            "https://api-inference.huggingface.co/models/google/pegasus-xsum",
             {
                  inputs: `Summarize the following text concisely. 
-                 Maximum number of characters to be used are ${max_length}.
                 Only include information explicitly present in the text. 
                 Do NOT add anything extra, do NOT infer, do NOT assume. 
                If the text is too short to summarize, just return it as-is. 
                  :\n${text}`, 
+                 parameters: { max_length: max_length, min_length: min_length }
              
             }, 
             {  headers: {
