@@ -19,14 +19,16 @@ export async function  generateSummary(text,length){
       try {
         const response = await axios.post(
             "https://api-inference.huggingface.co/models/google/pegasus-xsum",
-            { inputs: `Summarize the following text in brief . Only include factual points. Do not add any extra information at all:
+            {
+                 inputs: `Summarize the following text in brief . Only include factual points. Do not add any extra information at all:
             \n${text}` ,
-                 parameters : {max_length,min_length}},
-            { 
-                headers: {
+             parameters : {max_length: max_length,min_length: min_length}
+            }, 
+            {  headers: {
                     Authorization: `Bearer ${KEY}`,
                     "Content-Type": "application/json"
                 },
+               
                 timeout: 60000
             }
      ) ;
