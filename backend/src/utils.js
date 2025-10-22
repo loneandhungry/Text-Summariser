@@ -16,32 +16,39 @@ export async function  generateSummary(text,length){
      }
 
       const {max_length,min_length} = getLength(length);
-      try {
-        const response = await axios.post(
-           "https://api-inference.huggingface.co/models/google/pegasus-xsum",
+      const data = ({
+        messages: [
             {
-                 inputs: `Summarize the following text concisely. 
+                role: "user",
+                content: `Summarize the following text concisely in ${max_length} characters. 
                 Only include information explicitly present in the text. 
                 Do NOT add anything extra, do NOT infer, do NOT assume. 
                If the text is too short to summarize, just return it as-is. 
-                 :\n${text}`, 
-                 parameters: { max_length: max_length, min_length: min_length }
-             
-            }, 
-            {  headers: {
+                 :\n${text}`
+            },
+        ],
+        model: "meta-llama/Llama-3.2-1B-Instruct:novita",
+        max_new_tokens: max_length,
+      })
+
+
+      try {
+        const response = await axios.post(
+           "https://router.huggingface.co/v1/chat/completions",
+           data,
+           {
+              headers: {
                     Authorization: `Bearer ${KEY}`,
                     "Content-Type": "application/json"
                 },
-               
                 timeout: 60000
             }
-     ) ;
-
-     if(!response.data ||  !Array.isArray(response.data) || !response.data[0]?.summary_text){
+        );
+     const summary = response.data.choices[0].message.content;
+    if(!summary){
         throw new Error("Empty or invalid response from HuggingFace API.");
      }
 
-     const summary = response.data[0].summary_text;
      return summary;
     } catch (err) {
     console.error("Hugging Face Generate Summary API Error:", err.message);
