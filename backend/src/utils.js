@@ -75,7 +75,8 @@ const data =({
             content: `Summarize the following text concisely in ${max_length} characters. 
                 Only include information explicitly present in the text. 
                 Do NOT add anything extra, do NOT infer, do NOT assume. 
-               If the text is too short to summarize, just return it as-is. 
+                Even if there is not sufficient information, don't add anything, just return the summary as-it-is.
+               If the text is too short to summarize, just return it as-is. NO FACT OR INFORMATION FROM OUTSIDE THE PROVIDED TEXT AT ALL!!
                  :\n${text}`,
         },
     ],
