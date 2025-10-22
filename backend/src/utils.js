@@ -18,7 +18,7 @@ export async function  generateSummary(text,length){
       const {max_length,min_length} = getLength(length);
       try {
         const response = await axios.post(
-            "https://api-inference.huggingface.co/models/prithivMLmods/Llama-Chat-Summary-3.2-3B",
+            "https://api-inference.huggingface.co/models/meta-llama/Llama-3.1-8B-Instruct",
             {
                  inputs: `Summarize the following text concisely. 
                 Only include information explicitly present in the text. 
