@@ -34,7 +34,7 @@ export const limiter = rateLimit({
 })
 
 export function chunker(text){
-    const max = 700;
+    const max = 500;
     let chunks = []; let start = 0, end = null;
     while (start<text.length){
         let end = Math.min(text.length,start+max);
