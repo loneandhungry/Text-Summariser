@@ -5,18 +5,22 @@ const KEY = process.env.HUGGING_FACE_API;
 let prompt = 1;
 
 function getLength(l){
-    if(l === "s") {prompt = 3 ;return 50;}
-    else if(l === "m") {prompt = 5 ; return 100;}
-    else {prompt = 7; return 200;   }
+    if(l === "s") {prompt = 2 ;return {max_length: 70, min_length: 20}}
+    else if(l === "m") {prompt = 4 ; return {max_length: 140, min_length: 60}}
+    else {prompt = 4 ; return {max_length: 240, min_length: 140}}
 }
 
 export async function  generateSummary(text,length){
-      const max_length = getLength(length);
+     if(!text || text.trim().length < 30){
+        return `${text} (Too short to summarize bro!)`;
+     }
+
+      const {max_length,min_length} = getLength(length);
       try {
         const response = await axios.post(
-            "https://api-inference.huggingface.co/models/facebook/bart-large-xsum",
+            "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
             { inputs: `Summarize the following text in ${prompt} sentences:\n${text}` ,
-                 parameters : {max_length}},
+                 parameters : {max_length,min_length}},
             { 
                 headers: {
                     Authorization: `Bearer ${KEY}`,
