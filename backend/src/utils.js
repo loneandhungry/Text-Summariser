@@ -6,8 +6,8 @@ let prompt = 1;
 
 function getLength(l){
     if(l === "s") {prompt = 2 ;return {max_length: 100, min_length: 20}}
-    else if(l === "m") {prompt = 4 ; return {max_length: 150, min_length: 60}}
-    else {prompt = 4 ; return {max_length: 240, min_length: 200}}
+    else if(l === "m") {prompt = 4 ; return {max_length: 200, min_length: 60}}
+    else {prompt = 4 ; return {max_length: 300, min_length: 200}}
 }
 
 /*
