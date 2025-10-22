@@ -2,11 +2,12 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config({path: "../.env.local"});
 const KEY = process.env.HUGGING_FACE_API;
+let prompt = 1;
 
 function getLength(l){
-    if(l === "s") return 50;
-    if(l === "m") return 100;
-    return 200;
+    if(l === "s") {prompt = 3 ;return 50;}
+    else if(l === "m") {prompt = 5 ; return 100;}
+    else {prompt = 7; return 200;   }
 }
 
 export async function  generateSummary(text,length){
@@ -14,7 +15,7 @@ export async function  generateSummary(text,length){
       try {
         const response = await axios.post(
             "https://api-inference.huggingface.co/models/facebook/bart-large-xsum",
-            { inputs: `Summarize the following text in 3-4 sentences:\n${text}` ,
+            { inputs: `Summarize the following text in ${prompt} sentences:\n${text}` ,
                  parameters : {max_length}},
             { 
                 headers: {
