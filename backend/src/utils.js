@@ -18,8 +18,9 @@ export async function  generateSummary(text,length){
       const {max_length,min_length} = getLength(length);
       try {
         const response = await axios.post(
-            "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
-            { inputs: `Summarize the following text in ${prompt} sentences:\n${text}` ,
+            "https://api-inference.huggingface.co/models/google/pegasus-xsum",
+            { inputs: `Summarize the following text in ${prompt} sentences.Only include factual points. Do not add any extra information at all:
+            \n${text}` ,
                  parameters : {max_length,min_length}},
             { 
                 headers: {
