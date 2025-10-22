@@ -72,9 +72,7 @@ const data =({
     messages: [
         {
             role: "user",
-            content: `Summarize the following text concisely. 
-                Only include information explicitly present in the text.  
-               If the text is too short to summarize, just return it as-is. 
+            content: `Summarize the following text concisely in ${max_length}characters. 
                  :\n${text}`,
         },
     ],
